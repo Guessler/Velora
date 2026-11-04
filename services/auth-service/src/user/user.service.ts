@@ -1,7 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './entities/user.entity.js';
+import { PublicUser } from '../auth/auth.service.js';
 
 export interface CreateUserData {
   email: string;
@@ -48,7 +49,17 @@ export class UserService {
     return this.users.findOne({ where: { id } });
   }
 
-  getMe() {
-    return 'getMe';
+  async getMe(userId: string): Promise<PublicUser> {
+    const user = await this.users.findOne({
+      where: { id: userId },
+    });
+
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
+    const { passwordHash, ...publicUser } = user;
+
+    return publicUser;
   }
 }

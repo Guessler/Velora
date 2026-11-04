@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get } from '@nestjs/common';
 import { Can } from '@nestjs/authorization';
 import { UserService } from './user.service.js';
 
@@ -8,7 +8,7 @@ export class UserController {
 
   @Can.Anyone()
   @Get('me')
-  getMe() {
-    return this.userService.getMe();
+  getMe(@Body() userId: string) {
+    return this.userService.getMe(userId);
   }
 }

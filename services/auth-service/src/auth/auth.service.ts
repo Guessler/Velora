@@ -13,7 +13,7 @@ import { User } from '../user/entities/user.entity.js';
 import { UserService } from '../user/user.service.js';
 import { SignInDto, SignUpDto } from './dto/auth.dto.js';
 
-export type PublicUser = Omit<User, 'passwordHash' | 'refreshHash'>;
+export type PublicUser = Omit<User, 'passwordHash'>;
 
 @Injectable()
 export class AuthService {
@@ -82,15 +82,7 @@ export class AuthService {
     }
   }
 
-  csrf() {
-    return 'csrf';
-  }
-
-  private toPublicUser({
-    passwordHash,
-    refreshHash,
-    ...user
-  }: User): PublicUser {
+  private toPublicUser({ passwordHash, ...user }: User): PublicUser {
     return user;
   }
 }

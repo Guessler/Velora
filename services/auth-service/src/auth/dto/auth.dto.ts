@@ -15,12 +15,14 @@ export class SignUpDto {
 
 export class SignInDto {
   @IsEmail()
+  @MaxLength(254)
   email: string;
 
   @IsString()
+  @MinLength(1)
+  @MaxLength(128)
   password: string;
 }
-
 export class RefreshTokenDto {
   @IsString()
   @MinLength(1)

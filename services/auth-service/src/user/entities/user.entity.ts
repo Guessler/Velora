@@ -15,9 +15,6 @@ export class User {
   @Column({ name: 'password_hash', type: 'varchar', nullable: true, select: false })
   passwordHash: string | null;
 
-  @Column({ name: 'refresh_hash', type: 'varchar', nullable: true, select: false })
-  refreshHash: string | null;
-
   @Column({
     type: "enum",
     enum: UserRole,
