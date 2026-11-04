@@ -22,11 +22,15 @@
     "test:e2e": "vitest run --config ./vitest.config.e2e.ts"
   },
   "dependencies": {
+    "@nestjs/authentication": "^0.1.2",
+    "@nestjs/authorization": "^0.1.0",
     "@nestjs/common": "^12.0.1",
     "@nestjs/core": "^12.0.1",
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^12.0.1",
     "@nestjs/typeorm": "^12.0.2",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.15.1",
     "pg": "^8.23.1",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",

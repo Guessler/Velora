@@ -1,10 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
+import { Can } from '@nestjs/authorization';
 import { UserService } from './user.service.js';
 
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
-  @Get("me")
+
+  @Can.Anyone()
+  @Get('me')
   getMe() {
     return this.userService.getMe();
   }
