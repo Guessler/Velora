@@ -63,7 +63,11 @@ export class AuthService {
     return user;
   }
 
-  login(user: Pick<PublicUser, 'id'>) {
+  async login(data: SignInDto) {
+    const user = await this.verify(data.email, data.password);
+    if (!user) {
+      throw new UnauthorizedException('Invalid email or password');
+    }
     return this.tokens.issue(user.id, { method: 'password' });
   }
 

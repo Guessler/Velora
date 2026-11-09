@@ -1,6 +1,7 @@
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module.js';
+import morgan from 'morgan';
 
 try {
   process.loadEnvFile();
@@ -12,7 +13,6 @@ if (!process.env.JWT_SECRET) {
   throw new Error('JWT_SECRET is not set');
 }
 
-// Пример: CSRF_TRUSTED_ORIGINS=http://localhost:3001,https://app.example.com
 const trustedOrigins = (process.env.CSRF_TRUSTED_ORIGINS ?? '')
   .split(',')
   .map((origin) => origin.trim())
@@ -20,7 +20,9 @@ const trustedOrigins = (process.env.CSRF_TRUSTED_ORIGINS ?? '')
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const port = process.env.PORT ?? 3000;
 
+  app.use(morgan('dev'));
   app.enableCors({
     origin: trustedOrigins.length > 0 ? trustedOrigins : true,
     credentials: true,
@@ -28,6 +30,7 @@ async function bootstrap() {
 
   app.enableCsrfProtection({ trustedOrigins });
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
-  await app.listen(process.env.PORT ?? 3000);
+  await app.listen(port);
+  console.log(`Application is running on: http://localhost:${port}`);
 }
 await bootstrap();
