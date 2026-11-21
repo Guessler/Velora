@@ -68,7 +68,13 @@ export class AuthService {
     if (!user) {
       throw new UnauthorizedException('Invalid email or password');
     }
-    return this.tokens.issue(user.id, { method: 'password' });
+    return this.tokens.issue(user.id, {
+      method: 'password',
+      claims: {
+        role: user.role,
+        id: user.id
+      },
+    });
   }
 
   async logout(refreshToken: string): Promise<boolean> {

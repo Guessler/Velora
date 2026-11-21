@@ -3,7 +3,6 @@ import type { CookieOptions, Response } from 'express';
 export const ACCESS_COOKIE = 'access_token';
 export const REFRESH_COOKIE = 'refresh_token';
 
-/** Reads one cookie from the raw `Cookie` header (no cookie-parser dependency). */
 export function readCookie(
   cookieHeader: string | undefined,
   name: string,
@@ -35,7 +34,6 @@ const cookieOptions: CookieOptions = {
 const ACCESS_MAX_AGE = 15 * 60 * 1000; // 15m, same as the access token
 const REFRESH_MAX_AGE = 30 * 24 * 60 * 60 * 1000; // 30d, same as the refresh token
 
-/** Puts the pair into HttpOnly cookies, so a browser or Postman sends them back automatically. */
 export function setAuthCookies(
   res: Response,
   tokens: { accessToken: string; refreshToken: string },

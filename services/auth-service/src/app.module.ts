@@ -23,8 +23,8 @@ import { APP_GUARD } from '@nestjs/core';
       useFactory: () => ({
         accessToken: {
           key: process.env.JWT_SECRET!,
-          issuer: 'https://api.example.com',
-          audience: 'mobile-app',
+          issuer: process.env.JWT_ISSUER,
+          audience: process.env.JWT_AUDIENCE,
           ttl: '15m',
         },
         refreshToken: {

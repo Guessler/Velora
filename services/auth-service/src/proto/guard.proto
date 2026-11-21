@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package role;
+
+service RoleService {
+  rpc GetUserRoles(GetUserRolesRequest) returns (GetUserRolesResponse);
+  rpc HasRole(HasRoleRequest) returns (HasRoleResponse);
+}
+
+message GetUserRolesRequest {
+  string user_id = 1;
+}
+
+message GetUserRolesResponse {
+  repeated Role roles = 1;
+}
+
+message Role {
+  string id        = 1;
+  string name      = 2;
+  bool   is_active = 3;
+}
+
+message HasRoleRequest {
+  string user_id   = 1;
+  string role_name = 2;
+}
+
+message HasRoleResponse {
+  bool has_role = 1;
+}

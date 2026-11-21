@@ -22,11 +22,15 @@
     "test:e2e": "vitest run --config ./vitest.config.e2e.ts"
   },
   "dependencies": {
+    "@bufbuild/protobuf": "^2.17.0",
+    "@grpc/grpc-js": "^1.14.7",
+    "@grpc/proto-loader": "^0.8.1",
     "@nestjs/authentication": "^0.1.2",
     "@nestjs/authorization": "^0.1.0",
     "@nestjs/common": "^12.0.1",
     "@nestjs/core": "^12.0.1",
     "@nestjs/mapped-types": "*",
+    "@nestjs/microservices": "^12.5.1",
     "@nestjs/platform-express": "^12.0.1",
     "@nestjs/throttler": "^6.7.1",
     "@nestjs/typeorm": "^12.0.2",
@@ -53,6 +57,7 @@
     "prettier": "^3.4.2",
     "source-map-support": "^0.5.21",
     "supertest": "^7.0.0",
+    "ts-proto": "^2.22.0",
     "typescript": "^6.0.2",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^4.1.2"

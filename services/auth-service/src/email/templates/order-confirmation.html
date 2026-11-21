@@ -1,0 +1,15 @@
+
+<p>Hi {{ customer.name }},</p>
+<p>thank you for your order! We are packing it now.</p>
+<table>
+  <tr><th>Product</th><th>Qty</th><th>Price</th></tr>
+  {{#each items}}
+  <tr>
+    <td>{{ name }}</td>
+    <td>{{ quantity }}</td>
+    <td>{{ price }}</td>
+  </tr>
+  {{/each}}
+</table>
+<p><strong>Total: {{ total }}</strong></p>
+<p><a href="{{ orderUrl }}">View your order</a></p>
