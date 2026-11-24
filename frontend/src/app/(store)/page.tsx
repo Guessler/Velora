@@ -1,21 +1,11 @@
-import { AppSidebar } from "@/components/app-sidebar";
+
 import CardProduct from "@/components/shadcn-studio/card/card-12";
 import CardProductSkeleton from "@/components/skeletons/CardProductSkeleton";
-import { HeaderSkeleton } from "@/components/skeletons/HeaderSkeleton";
-import Header from "@/components/ui/header";
-import { SidebarProvider } from "@/components/ui/sidebar";
-import { SidebarBackdrop } from "@/components/ui/sidebar-backdrop";
 import { Suspense } from "react";
 export default function Home() {
+
   return (
     <div className="px-10 xl:px-0 flex flex-col">
-      <SidebarProvider className="flex flex-col" defaultOpen={false}>
-        <Suspense fallback={<HeaderSkeleton />}>
-          <Header />
-        </Suspense>
-        <SidebarBackdrop />
-        <AppSidebar />
-
         <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 xl:grid-cols-5 gap-4 py-6 mx-auto w-full max-w-screen-2xl">
           <Suspense
             fallback={Array.from({ length: 10 }).map((_, index) => (
@@ -23,11 +13,10 @@ export default function Home() {
             ))}
           >
             {Array.from({ length: 100 }).map((_, index) => (
-              <CardProduct key={index} />
+              <CardProduct  key={index} />
             ))}
           </Suspense>
         </div>
-      </SidebarProvider>
     </div>
   );
 }

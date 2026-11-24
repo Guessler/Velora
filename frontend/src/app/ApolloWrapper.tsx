@@ -10,7 +10,7 @@ import {
 function makeClient() {
   const httpLink = new HttpLink({
     // Use an absolute URL for SSR
-    uri: "https://your-api.com/graphql",
+    uri: process.env.NEXT_PUBLIC_GRAPHQL_URL,
     fetchOptions: {
       // Optional: Next.js-specific fetch options
       // Note: This doesn't work with `export const dynamic = "force-static"`

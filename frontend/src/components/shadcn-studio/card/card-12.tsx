@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import Heart from "@/assets/svg/heart";
 import { ShoppingCart, Star, Wallet } from "lucide-react";
-
+import { ProductDto } from "@/types/product.dto";
+// data: ProductDto
 const CardProduct = () => {
   const [liked, setLiked] = useState(false);
 

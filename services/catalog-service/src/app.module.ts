@@ -10,7 +10,6 @@ import { BrandModule } from './brand/brand.module.js';
 import { JwtModule } from '@nestjs/jwt';
 import awsConfig from './config/aws.config.js';
 import { ConfigModule } from '@nestjs/config';
-import { S3Service } from './storage/s3.service.js';
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
@@ -48,6 +47,6 @@ import { S3Service } from './storage/s3.service.js';
     BrandModule,
   ],
   controllers: [AppController],
-  providers: [AppService, S3Service],
+  providers: [AppService],
 })
 export class AppModule {}

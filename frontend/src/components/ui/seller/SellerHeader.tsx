@@ -76,11 +76,11 @@ export default function SellerHeader() {
           <div className="hidden h-9 w-px bg-neutral-200 sm:block" />
 
           <Link
-            href="/seller/store"
+            href="/"
             className="hidden items-center gap-2 text-sm font-medium text-neutral-700 transition hover:text-black sm:flex"
           >
             <Store size={21} strokeWidth={1.7} />
-            <span>Мой магазин</span>
+            <span>Вернуться в магазин</span>
           </Link>
 
           <form action={logout}>

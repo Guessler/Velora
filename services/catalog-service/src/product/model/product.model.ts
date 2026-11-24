@@ -15,7 +15,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { ProductImage } from './product-image.entity.js';
-
+import type { Relation } from 'typeorm';
 @Entity('products')
 @ObjectType()
 export class Product {
@@ -64,7 +64,7 @@ export class Product {
   @OneToMany(() => ProductImage, (image) => image.product, {
     cascade: true,
   })
-  images: ProductImage[];
+  images: Relation<ProductImage[]>;
 
   @CreateDateColumn()
   @Field(() => GraphQLISODateTime)
